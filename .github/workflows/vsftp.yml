@@ -15,17 +15,17 @@ jobs:
 
     - name: Mirror All Camera Folders from FTP
       env:
-        FTP_SERVER: vsftp.june07.com
-        FTP_USERNAME: camuser
+        FTP_SERVER: ${{ secrets.FTP_SERVER }}
+        FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
         FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
       run: |
         mkdir -p images
         sudo apt-get update && sudo apt-get install -y lftp
         
-        # 'mirror' downloads the entire directory structure automatically
+        # Removed '--reverse=no' entirely since downloading is the default behavior
         lftp -u "$FTP_USERNAME","$FTP_PASSWORD" $FTP_SERVER <<EOF
         set ftp:ssl-allow no
-        mirror --continue --reverse=no / ./images
+        mirror --continue / ./images
         quit
         EOF
 
