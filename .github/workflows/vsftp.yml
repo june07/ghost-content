@@ -15,8 +15,8 @@ jobs:
 
     - name: Mirror All Camera Folders from FTP
       env:
-        FTP_SERVER: ${{ secrets.FTP_SERVER }}
-        FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+        FTP_SERVER: vsftp.june07.com
+        FTP_USERNAME: camuser
         FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
       run: |
         mkdir -p images
