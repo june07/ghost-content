@@ -25,7 +25,8 @@ jobs:
         # Removed '--reverse=no' entirely since downloading is the default behavior
         lftp -u "$FTP_USERNAME","$FTP_PASSWORD" $FTP_SERVER <<EOF
         set ftp:ssl-allow no
-        mirror --continue / ./images
+        set xfer:ignore-size yes
+        mirror / ./images
         quit
         EOF
 
