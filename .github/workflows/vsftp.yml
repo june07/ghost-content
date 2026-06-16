@@ -2,7 +2,7 @@ name: Sync Multi-Camera Snapshots
 
 on:
   schedule:
-    - cron: '*/* * * * *'
+    - cron: '* * * * *'
   workflow_dispatch: 
 
 jobs:
